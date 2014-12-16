@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Radar Chart</title>
+		<script src="js/Chart.js"></script>
+		<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<style>
+			canvas{
+			}
+			body{
+				color: white;
+			}
+			.bullet{
+				display: inline-block;
+				width: 20px;
+				height: 23px;
+				
+			}
+			
+			.data1{
+				background-color: #F38630;
+			}
+			
+			.data2{
+				background-color: #E0E4CC;
+			}
+			
+			.data3{
+				background-color: #69D2E7;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" height="450" width="450"></canvas>
+		<h3>
+			Use slider to change the value of chart data.
+		</h3>
+	
+		<div>
+		<span class="bullet data1"></span><span>1</span><input type="range" id="0" name="points" min="1" max="100" value="70"/><span>100</span>
+		<span class="bullet data2"></span><span>1</span><input type="range" id ="1" name="points" min="1" max="100" value="50"/><span>100</span>
+		<span class="bullet data3"></span><span>1</span><input type="range" id="2" name="points" min="1" max="100" value="100"/><span>100</span>
+			
+		</div>
+		
+		<h4>
+				This demo is implemented using Chart.js library.
+		</h4>
+
+	<script type="text/javascript" src="js/pie_chart.js"></script>
+	</body>
+	
+</html>

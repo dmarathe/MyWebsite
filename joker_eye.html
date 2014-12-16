@@ -1,0 +1,203 @@
+<!Doctype Html>
+<html>
+	<head>
+		<style>
+			body{
+				margin-top: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<center>
+			<canvas id="myCanvas" width="500" height="500" style="border:1px solid #d3d3d3;">
+			Your browser does not support the HTML5 canvas tag.
+			</canvas>
+		</center>	
+	</body>
+	<script>
+		var Jocker = function Jocker(canvasId) {
+			this.canvas = document.getElementById(canvasId) || document.createElement("canvas");
+			this.ctx = this.canvas.getContext("2d");
+			var _this = this;
+			var count = 0;
+			function drawCap() {
+				//cap
+				_this.ctx.beginPath();
+				_this.ctx.moveTo(150,240);
+				_this.ctx.lineTo(230,90);
+				_this.ctx.lineTo(311,240);
+				_this.ctx.stroke();
+				_this.ctx.fillStyle = '#FF0000';
+				_this.ctx.fill();
+				_this.ctx.fillStyle = '#000000';
+				//cap circle 
+				_this.ctx.beginPath();
+				_this.ctx.arc(230,76,15,0,2*Math.PI);
+				_this.ctx.stroke();
+				_this.ctx.fillStyle = "yellow";
+				_this.ctx.fill();
+				_this.ctx.fillStyle = "#000000";				
+			}
+			
+			function drawNose() {
+				//nose
+				_this.ctx.beginPath();
+				_this.ctx.moveTo(230,290);
+				_this.ctx.lineTo(240,320);
+				_this.ctx.lineTo(220,320);
+				_this.ctx.lineTo(230,290);
+				_this.ctx.stroke();
+				_this.ctx.fillStyle = "#0000FF";
+				_this.ctx.fill();
+				_this.ctx.fillStyle = "#000000";
+				//_this.ctx.fill();
+			}
+			
+			function drawEars() {
+				//Right ear
+				_this.ctx.beginPath();
+				_this.ctx.moveTo(142,250);
+				_this.ctx.lineTo(110,265);
+				_this.ctx.lineTo(133,280);
+				_this.ctx.stroke();
+				_this.ctx.fillStyle = "#00FF00";
+				_this.ctx.fill();
+				_this.ctx.fillStyle = "#FFFFFF";
+				
+				//left ear
+				_this.ctx.beginPath();
+				_this.ctx.moveTo(318,250);
+				_this.ctx.lineTo(348,265);
+				_this.ctx.lineTo(330,280);
+				_this.ctx.stroke();
+				_this.ctx.fillStyle = "#00FF00";
+				_this.ctx.fill();
+				_this.ctx.fillStyle = "#FFFFFF";
+				
+			
+			}
+			
+			function newPointOfCenter(x, y, count) {
+				//return Math.sqrt(16 - x*x);
+				var posi = count % 4, ret = {};
+				switch (posi) {
+					case 0 :
+						ret['x'] = x - 8;//inner radius;
+						ret['y'] = y;
+						break;
+					case 1:
+						ret['x'] = x;//inner radius;
+						ret['y'] = y -8;
+						break;
+					case 2:
+						ret['x'] = x + 8;//inner radius;
+						ret['y'] = y;
+						break;
+					case 3:
+						ret['x'] = x;//inner radius;
+						ret['y'] = y + 8;
+						break;
+				}
+				return ret;
+			}
+			function drawEyes() {
+				_this.ctx.clearRect( 162, 242, 36, 36);
+				_this.ctx.clearRect(252, 242, 36, 36);
+				
+				_this.ctx.beginPath();
+				_this.ctx.arc(180,260,16,0,2*Math.PI);
+				_this.ctx.stroke();
+				_this.ctx.fillStyle = "#FFFFFF";
+				_this.ctx.fill();
+				_this.ctx.fillStyle = "#000000";
+				
+				
+				var pt = newPointOfCenter(180, 260, count);
+				_this.ctx.beginPath();
+				_this.ctx.arc(pt.x, pt.y, 8, 0, 2*Math.PI);
+				_this.ctx.stroke();
+				//_this.ctx.fillStyle = '#FF0000';
+				_this.ctx.fill();
+				//_this.ctx.fillStyle = "#000000";
+				//var pt = newPointOfCenter(180, 260, count);
+				_this.ctx.beginPath()
+				_this.ctx.arc(270,260,16,0,2*Math.PI);
+				_this.ctx.stroke();
+				_this.ctx.fillStyle = "#FFFFFF";
+				_this.ctx.fill();
+				_this.ctx.fillStyle = "#000000";
+				
+				pt = newPointOfCenter(270, 260, count);
+				_this.ctx.beginPath();
+				_this.ctx.arc(pt.x, pt.y, 8, 0, 2*Math.PI);
+				_this.ctx.stroke();
+				_this.ctx.fill();
+			}
+			function drawFace() {
+				_this.ctx.beginPath();
+				_this.ctx.arc(230,300,100,0,2*Math.PI);
+				_this.ctx.stroke();
+				_this.ctx.fillStyle = "#FFFFFF";
+				_this.ctx.fill();
+				_this.ctx.fillStyle = "#000000";
+				
+				
+				_this.ctx.moveTo(230,300);
+				_this.ctx.beginPath();
+				_this.ctx.arc(230,310,50,0*Math.PI,1*Math.PI);
+				_this.ctx.lineWidth = 15;
+				_this.ctx.strokeStyle = "#D63173";
+				
+				//_this.ctx.stroke();
+				
+				//_this.ctx.beginPath();
+				//_this.ctx.moveTo(230,305);
+				//_this.ctx.arc(230,305,60,0*Math.PI,1*Math.PI);
+				//_this.ctx.stroke();
+				/*
+				//_this.ctx.beginPath();
+				_this.ctx.moveTo(179,300);
+				_this.ctx.lineTo(168,308);
+				//_this.ctx.stroke();
+				
+				
+				
+				//_this.ctx.beginPath();
+				_this.ctx.moveTo(281,300);
+				_this.ctx.lineTo(290,307);*/
+				_this.ctx.stroke();
+				_this.ctx.strokeStyle = "black";
+				_this.ctx.lineWidth = 1;
+				
+							
+			}
+			
+			this.drawJocker = function() {
+				drawFace();
+				drawEyes();
+				drawEars();
+				drawNose();
+				drawCap();
+				window.setInterval(this.animate, 1000);
+				
+			}
+			
+			this.animate = function() {
+			   // 180, 260 , 16
+				//alert("I am here");
+				_this.ctx.clearRect( 162, 242, 36, 36);
+				_this.ctx.clearRect(252, 242, 36, 36);
+				count++;
+				if (count == 100) {
+					count = 0;
+				}
+				drawEyes();
+			}
+		}
+		
+		var j = new Jocker("myCanvas");
+		j.drawJocker();
+		//window.setInterval( function () {j.animate()},1000);
+		
+	</script>
+</html>

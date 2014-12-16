@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Dhanshree Site</title>
+<link rel="stylesheet" href="css/main.css" type="text/css">
+<link rel="stylesheet" href="css/animation.css" type="text/css">
+<link rel="stylesheet" href="css/button.css" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<script type="text/javascript">
+
+function fadeMe(){
+var animateBlock=document.getElementById("animationBlock");
+if(animateBlock){
+	animateBlock.setAttribute("class","fade");	
+}
+}
+function shiftMe(){
+var animateBlock=document.getElementById("animationBlock");
+	if(animateBlock){
+		animateBlock.setAttribute("class","shift");
+	}
+}
+function spinMe(){
+	var animateBlock=document.getElementById("animationBlock");
+	if(animateBlock){
+		animateBlock.setAttribute("class","spin");
+	}
+}
+function bounceMe(){
+	var animateBlock=document.getElementById("animationBlock");
+	if(animateBlock){
+		animateBlock.setAttribute("class","bounce");
+	}
+}
+</script>
+
+</head>
+<body>	
+	
+			<div style="float:left;width:15%" ><div style="padding:10px;margin-left:15px" class="title">CSS3 demo</div></div>
+			
+			<div style="float:left">
+				<center>
+				<div id="animationBlock">
+					<img src="images/animated.gif"/>
+				</div>
+				</center>
+				<br/>
+				<span class="button red" onclick="fadeMe();" style="margin:10px">Fade Me</span>
+				<span class="button green" onclick="shiftMe();"style="margin:10px">Shift Me</span>
+				<span class="button blue" onclick="spinMe();"style="margin:10px">Spin Me</span>
+				<span class="button pink" onclick="bounceMe();"style="margin:10px">Bounce Me</span>
+			</div>
+			<div style="float:right;width:30%">
+			<p><h3 >Animation Instructions</h3>
+					<p style="font-size:2em">
+					To see the demo
+					<ol style="font-size:1.4em">
+						<li>Click on the button</li>
+						<li>Bring the mouse cursor on image</li>
+						<li>See the result</li>
+					</ol>	
+					</p>
+					<p><h4 style="color:red">Note: Demo will work on chrome and mozilla.</h4></p>	
+					</p>
+			</div>
+</body>
+</html>
